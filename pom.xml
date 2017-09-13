@@ -14,7 +14,7 @@
    <groupId>eu.serco.xmf.drb</groupId>
    <artifactId>dhus-addon-cosmo</artifactId>
    <packaging>jar</packaging>
-   <version>1.0.1-osf</version>
+   <version>1.0.2-osf</version>
 
    <name>DHuS - COSMO-SkyMed addon</name>
 
@@ -22,7 +22,7 @@
       <dependency>
          <groupId>fr.gael.drb</groupId>
          <artifactId>drbx-cortex-topic-cosmoskymed</artifactId>
-         <version>1.1.0</version>
+         <version>1.1.1</version>
       </dependency>
    </dependencies>
 
@@ -109,6 +109,5 @@
       <tag>HEAD</tag>
       <url>https://github.com/SentinelDataHub/dhus-cosmo-skymed</url>
    </scm>
-
 
 </project>
