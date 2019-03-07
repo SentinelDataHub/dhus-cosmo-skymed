@@ -59,6 +59,12 @@
                        required="true"/>
          </metadataType>
 
+         <metadataType id="date"
+                       name="Date"
+                       contentType="text/date+iso8601"
+                       category="summary">
+         </metadataType>
+
          <metadataType id="size"
                        name="Size"
                        contentType="text/plain"
@@ -86,7 +92,7 @@
          <metadataType id="mission"
                        name="Mission"
                        contentType="text/plain"
-                       category="product">
+                       category="platform">
             <solrField name="mission"
                        type="string"/>
          </metadataType>
@@ -98,6 +104,12 @@
             <solrField name="platformname"
                        type="text_general"/>
          </metadataType>
+
+         <metadataType id="satellite"
+                       name="Satellite"
+                       contentType="text/plain"
+                       category="summary">
+         </metadataType> 
 
          <metadataType id="platformShortName"
                        name="Platform short name"
@@ -144,6 +156,12 @@
                        category="instrument">
             <solrField name="instrumentshortname"
                        type="text_general"/>
+         </metadataType>
+
+         <metadataType id="instrument"
+                       name="Instrument"
+                       contentType="text/plain"
+                       category="summary">
          </metadataType>
 
          <metadataType id="sensorOperationalMode"
@@ -356,6 +374,14 @@
 
          </metadata>,
 
+         <metadata 
+            category="summary" 
+            name="Date" 
+            type="text/date+iso8601">
+         { local:computedateTime(
+              fn:data($Node_ProductDefinitionData/SceneSensingStartUTC)) }       
+         </metadata>,  
+
          <!-- SENSING START -->
          <metadata queryable="beginposition" name="Sensing start"
                    category="product" type="text/date+iso8601">
@@ -381,6 +407,10 @@
                    category="platform" type="text/plain">
          { concat("COSMO-SkyMed-", substring($name, 5, 1)) }
          </metadata>,
+
+         <metadata category="summary" name="Satellite" type="text/plain">
+         { concat("COSMO-SkyMed-", substring($name, 5, 1)) }
+         </metadata>,  
 
          <!-- PLATFORM SHORT NAME -->
          <metadata queryable="platformshortname" name="Platform short name"
@@ -430,6 +460,8 @@
                    category="instrument" type="text/plain">
             SAR
          </metadata>,
+
+         <metadata category="summary" name="Instrument" type="text/plain">SAR</metadata>,
 
          <!-- INSTRUMENT MODE -->
          <metadata queryable="sensoroperationalmode" name="Sensor operational mode"
