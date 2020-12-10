@@ -44,10 +44,12 @@
    <rdf:Description rdf:about="&csk;productFolder">
       <dhus:metadataTypes rdf:parseType="Literal">
 
-         <metadataType id="generationTime"
-                       name="Generation time"
-                       contentType="text/plain"
+         <metadataType id="generationDate"
+                       name="Generation date"
+                       contentType="text/date+iso8601"
                        category="product">
+            <solrField name="generationdate"
+                       type="tdate"/>
          </metadataType>
 
          <metadataType id="format"
@@ -326,9 +328,10 @@
          (
          <!-- Indexed metadata -->
 
-         <!-- GENERATION TIME -->
-         <metadata name="Generation time"
-                   category="product" type="text/plain">
+         <!-- GENERATION DATE -->
+         <metadata name="Generation date"
+                   queryable="generationdate"
+                   category="product" type="text/date+iso8601">
          { local:computedateTime(
               fn:data($Node_ProductInfo/ProductGenerationDate)) }
          </metadata>,
